@@ -1,6 +1,56 @@
-import { useState, useMemo, useRef, type ChangeEvent } from 'react'
+import { useState, useRef, useEffect, type ChangeEvent } from 'react'
 import type { Match } from './utils/regex'
 import { getMatches } from './utils/regex'
+import { EditorView, Decoration, type DecorationSet, placeholder as cmPlaceholder } from '@codemirror/view'
+import { EditorState, StateEffect, StateField, RangeSetBuilder } from '@codemirror/state'
+
+/* ---------- CodeMirror highlight extension ---------- */
+
+const setHighlights = StateEffect.define<{ matches: Match[]; colors: string[] }>()
+
+const highlightField = StateField.define<DecorationSet>({
+  create: () => Decoration.none,
+  update(deco, tr) {
+    deco = deco.map(tr.changes)
+    for (const e of tr.effects) {
+      if (e.is(setHighlights)) {
+        const builder = new RangeSetBuilder<Decoration>()
+        const sorted = [...e.value.matches].sort((a, b) => a.index - b.index)
+        for (let i = 0; i < sorted.length; i++) {
+          const m = sorted[i]
+          builder.add(
+            m.index, m.index + m.length,
+            Decoration.mark({ attributes: { style: `background:${e.value.colors[i % e.value.colors.length]};border-radius:2px;` } }),
+          )
+        }
+        deco = builder.finish()
+      }
+    }
+    return deco
+  },
+  provide: f => EditorView.decorations.from(f),
+})
+
+const cmTheme = EditorView.theme({
+  '&': { flex: '1', minHeight: '0' },
+  '.cm-scroller': {
+    padding: '12px',
+    overflow: 'auto',
+    fontFamily: 'var(--font-mono)',
+    fontSize: '0.92rem',
+    lineHeight: '1.6',
+  },
+  '.cm-content': {
+    padding: '0',
+    caretColor: 'var(--text)',
+    color: 'var(--text)',
+    whiteSpace: 'pre-wrap',
+    wordBreak: 'break-word',
+  },
+  '&.cm-focused': { outline: 'none' },
+  '.cm-line': { padding: '0' },
+  '.cm-placeholder': { color: 'var(--text-dim)', opacity: '0.5' },
+})
 
 /* ---------- HighlightInput ---------- */
 
@@ -8,57 +58,51 @@ export function HighlightInput({ value, onChange, placeholder, matches, matchCol
   value: string; onChange: (v: string) => void; placeholder: string
   matches: Match[]; matchColors: string[]; disabled?: boolean
 }) {
-  const bgRef = useRef<HTMLDivElement>(null)
-  const taRef = useRef<HTMLTextAreaElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const viewRef = useRef<EditorView | null>(null)
+  const onChangeRef = useRef(onChange)
+  onChangeRef.current = onChange
 
-  const segments = useMemo(() => {
-    if (!value || matches.length === 0) return null
-    const segs: { text: string; isMatch: boolean; idx: number }[] = []
-    let last = 0
-    for (let i = 0; i < matches.length; i++) {
-      const m = matches[i]
-      if (m.index > last) segs.push({ text: value.slice(last, m.index), isMatch: false, idx: -1 })
-      segs.push({ text: value.slice(m.index, m.index + m.length), isMatch: true, idx: i })
-      last = m.index + m.length
+  useEffect(() => {
+    if (!containerRef.current) return
+    const view = new EditorView({
+      state: EditorState.create({
+        doc: value,
+        extensions: [
+          highlightField,
+          EditorView.lineWrapping,
+          EditorView.editable.of(!disabled),
+          EditorState.readOnly.of(!!disabled),
+          cmPlaceholder(placeholder),
+          cmTheme,
+          EditorView.updateListener.of(update => {
+            if (update.docChanged) onChangeRef.current(update.state.doc.toString())
+          }),
+        ],
+      }),
+      parent: containerRef.current,
+    })
+    viewRef.current = view
+
+    const observer = new ResizeObserver(() => view.requestMeasure())
+    observer.observe(containerRef.current!)
+    return () => { observer.disconnect(); view.destroy(); viewRef.current = null }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    const view = viewRef.current
+    if (!view) return
+    const current = view.state.doc.toString()
+    if (current !== value) {
+      view.dispatch({ changes: { from: 0, to: current.length, insert: value } })
     }
-    if (last < value.length) segs.push({ text: value.slice(last), isMatch: false, idx: -1 })
-    return segs
-  }, [value, matches])
+  }, [value])
 
-  const syncScroll = () => {
-    if (bgRef.current && taRef.current) {
-      bgRef.current.scrollTop = taRef.current.scrollTop
-      bgRef.current.scrollLeft = taRef.current.scrollLeft
-    }
-  }
+  useEffect(() => {
+    viewRef.current?.dispatch({ effects: setHighlights.of({ matches, colors: matchColors }) })
+  }, [matches, matchColors])
 
-  return (
-    <div className="highlight-input-wrap">
-      <div className="highlight-input-bg" ref={bgRef} aria-hidden>
-        {segments
-          ? segments.map((s, i) =>
-              s.isMatch ? (
-                <mark key={i} style={{ background: matchColors[s.idx % matchColors.length] }}>{s.text}</mark>
-              ) : (
-                <span key={i}>{s.text}</span>
-              )
-            )
-          : <span className="placeholder">{placeholder}</span>}
-      </div>
-      <textarea
-        ref={taRef}
-        className="highlight-input-ta"
-        value={value}
-        onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
-          if (!disabled) onChange(e.target.value)
-        }}
-        onScroll={syncScroll}
-        placeholder={placeholder}
-        spellCheck={false}
-        readOnly={disabled}
-      />
-    </div>
-  )
+  return <div ref={containerRef} className="highlight-input-wrap" />
 }
 
 /* ---------- FlagBtn ---------- */

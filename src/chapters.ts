@@ -27,7 +27,7 @@ export const chapters: Chapter[] = [
 **Escaping:** If you need to match a special character like \`.\`, \`*\`, or \`+\`, put a backslash before it: \`\\.\` matches a literal dot.
 
 > In the exercises, try matching "cat" and notice it also matches inside "category" - that's why we later learn about word boundaries!`,
-    exercises: ['01', '33', '34', '38'],
+    exercises: ['01', '02', '03', '04'],
   },
   {
     id: 'classes',
@@ -57,7 +57,7 @@ export const chapters: Chapter[] = [
 **Negation:** Use \`^\` right after the opening bracket: \`[^aeiou]\` matches anything that is NOT a vowel.
 
 > Pro tip: Character classes match exactly ONE character. Use quantifiers like \`+\` or \`{3}\` to match multiple!`,
-    exercises: ['02', '03', '04', '05', '06', '07', '08', '09'],
+    exercises: ['05', '06', '07', '08', '09', '10', '11', '12'],
   },
   {
     id: 'quantifiers',
@@ -86,7 +86,7 @@ export const chapters: Chapter[] = [
 • \`/.*?/\` on "abc" → matches "" (zero chars, then "a", etc.)
 
 > Most patterns use \`+\` and \`{n}\` day-to-day. Start with those!`,
-    exercises: ['10', '11', '35', '12', '36', '13', '39', '31'],
+    exercises: ['13', '14', '15', '16', '17', '18', '19', '20'],
   },
   {
     id: 'anchors',
@@ -113,7 +113,7 @@ export const chapters: Chapter[] = [
 **Word boundaries** are essential for matching whole words. Without \`\\b\`, a pattern like \`cat\` will match inside "category", "scat", "catalog" etc.
 
 > Think of anchors as "invisible checkpoints" - they assert something about the position but consume no characters.`,
-    exercises: ['14', '15', '16', '37'],
+    exercises: ['21', '22', '23', '24'],
   },
   {
     id: 'groups',
@@ -142,7 +142,7 @@ export const chapters: Chapter[] = [
 **Named groups** make patterns self-documenting: \`(?<year>\\d{4})\` vs remembering "group 1 is year".
 
 > Groups are the most powerful regex feature - they turn "does it match?" into "what did it match and can I reuse it?"`,
-    exercises: ['17', '18', '19', '20', '26'],
+    exercises: ['25', '26', '27', '28', '29'],
   },
   {
     id: 'lookaround',
@@ -169,7 +169,7 @@ export const chapters: Chapter[] = [
 **Stacking lookaheads** is how you implement password validation: each lookahead checks one requirement without interfering with the others.
 
 > Lookaround is like peeking ahead or behind without taking a step. It's essential for patterns like "extract prices" or "validate passwords".`,
-    exercises: ['21', '22', '23', '27', '40'],
+    exercises: ['30', '31', '32', '33', '34'],
   },
   {
     id: 'practical',
@@ -204,6 +204,6 @@ export const chapters: Chapter[] = [
 • Named groups make patterns self-documenting
 
 > Professional regex is about knowing which patterns are reliable vs "good enough". Email validation, for example, is famously complex - many production systems use a \`@\` check plus a library.`,
-    exercises: ['24', '25', '28', '29', '30', '32'],
+    exercises: ['35', '36', '37', '38', '39', '40'],
   },
 ]

@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Link, useParams } from '@tanstack/react-router'
 import { exercises, diffStars, type Exercise } from '../exercises'
 import { chapters } from '../chapters'
@@ -36,6 +36,14 @@ export default function ExerciseDetail() {
   const [showSolution, setShowSolution] = useState(false)
   const [checkResult, setCheckResult] = useState<{ ok: boolean; msg: string } | null>(null)
 
+  useEffect(() => {
+    setPattern('')
+    setFlags('g')
+    setShowHint(false)
+    setShowSolution(false)
+    setCheckResult(null)
+  }, [id])
+
   const matchColors = useMatchColors()
   const { matches, error } = useMemo(() => getMatches(pattern, flags, ex?.text ?? ''), [pattern, flags, ex?.text])
 
@@ -53,7 +61,10 @@ export default function ExerciseDetail() {
   const handleCheck = () => {
     const result = patternsMatch({ pattern, flags }, { pattern: ex.pattern, flags: ex.flags }, ex.text)
     setCheckResult(result)
-    if (result.ok) markDone(ex.id)
+    if (result.ok) {
+      markDone(ex.id)
+      setShowSolution(true)
+    }
   }
 
   const handleShowSolution = () => {
@@ -158,7 +169,9 @@ export default function ExerciseDetail() {
       {/* solution */}
       {showSolution && (
         <div className="solution-box">
-          <div className="solution-header">Solution</div>
+          <div className="solution-header">
+            {checkResult?.ok ? 'Reference solution (may differ from yours)' : 'Solution'}
+          </div>
           <div className="solution-pattern">
             <code>/{ex.pattern}/{ex.flags}</code>
           </div>
