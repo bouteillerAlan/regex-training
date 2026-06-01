@@ -90,7 +90,7 @@ export default function ExercisesList() {
       <div className="exercises-intro">
         <h2 className="exercises-title">🏋️ Master Regex, Step by Step</h2>
         <p className="exercises-subtitle">
-          <strong>{exercises.length} hands-on exercises</strong> — from your first literal match to real-world patterns like email, URL, and password validation.
+          <strong>{exercises.length} hands-on exercises</strong> - from your first literal match to real-world patterns like email, URL, and password validation.
           Each exercise guides you through writing the right pattern, with live feedback, hints, and a full explanation when you're stuck.
         </p>
         <p className="exercises-subtitle" style={{ marginTop: 8 }}>
@@ -102,7 +102,7 @@ export default function ExercisesList() {
           <div className="progress-fill" style={{ width: `${(totalDone / exercises.length) * 100}%` }} />
         </div>
         <p className="exercises-progress-text">
-          {totalDone} / {exercises.length} completed{totalDone === exercises.length ? ' — 🎉 You did it!' : ''}
+          {totalDone} / {exercises.length} completed{totalDone === exercises.length ? ' - 🎉 You did it!' : ''}
         </p>
       </div>
 

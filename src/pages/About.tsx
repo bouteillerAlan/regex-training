@@ -5,7 +5,7 @@ export default function About() {
         <h2 className="about-title">About Regex Playground</h2>
         <p className="about-text">
           Regex Playground is a free, open-source tool for learning and practising regular expressions directly in your browser.
-          No sign-up, no setup — just you and your patterns.
+          No sign-up, no setup - just you and your patterns.
         </p>
         <p className="about-text">
           It covers everything from your first literal match to advanced concepts like lookaheads, named groups, and lazy quantifiers,
@@ -32,7 +32,6 @@ export default function About() {
           <a className="about-link" href="https://rmv.a2n.dev/" target="_blank" rel="noopener noreferrer">
             Alan Bouteiller
           </a>
-          . Powered by React, TypeScript, and Vite.
         </p>
       </div>
     </div>

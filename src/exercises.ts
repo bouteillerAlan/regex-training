@@ -28,10 +28,10 @@ export const exercises: Exercise[] = [
   {
     id: '01', title: 'Find "cat"', difficulty: 'beginner', category: 'Literal', chapter: 'literal',
     desc: 'Match the exact word **cat** wherever it appears.',
-    hint: 'Just type the word itself — no special syntax needed.',
+    hint: 'Just type the word itself - no special syntax needed.',
     text: 'The cat sat on the mat.\nCategory: feline.\nI like cats.',
     pattern: 'cat', flags: 'g',
-    explain: 'The simplest regex is a literal string. `/cat/g` finds every occurrence of the characters c-a-t in sequence. Notice it also matches inside "Category" and "cats" — that\'s why word boundaries matter!',
+    explain: 'The simplest regex is a literal string. `/cat/g` finds every occurrence of the characters c-a-t in sequence. Notice it also matches inside "Category" and "cats" - that\'s why word boundaries matter!',
   },
   {
     id: '02', title: 'Find any digit', difficulty: 'beginner', category: 'Character class', chapter: 'classes',
@@ -47,7 +47,7 @@ export const exercises: Exercise[] = [
     hint: 'Use a character set with a range.',
     text: 'Hello World! 2024\nTest: ABC abc.',
     pattern: '[a-zA-Z]', flags: 'g',
-    explain: '`[a-z]` matches any lowercase letter, `[A-Z]` matches uppercase. Combined as `[a-zA-Z]` we match any letter. This is called a character class — it matches ONE character from the set.',
+    explain: '`[a-z]` matches any lowercase letter, `[A-Z]` matches uppercase. Combined as `[a-zA-Z]` we match any letter. This is called a character class - it matches ONE character from the set.',
   },
   {
     id: '04', title: 'Find word characters', difficulty: 'beginner', chapter: 'classes', category: 'Shorthand',
@@ -55,7 +55,7 @@ export const exercises: Exercise[] = [
     hint: 'There\'s a shorthand for word characters.',
     text: 'hello_world 123 !@#\nuser_name-42.',
     pattern: '\\w', flags: 'g',
-    explain: '`\\w` is shorthand for `[a-zA-Z0-9_]` — word characters. Notice `-` and `!@#` and `.` are NOT matched. Underscores are included (it\'s useful for variable names).',
+    explain: '`\\w` is shorthand for `[a-zA-Z0-9_]` - word characters. Notice `-` and `!@#` and `.` are NOT matched. Underscores are included (it\'s useful for variable names).',
   },
   {
     id: '05', title: 'Find whitespace', difficulty: 'easy', chapter: 'classes', category: 'Shorthand',
@@ -71,7 +71,7 @@ export const exercises: Exercise[] = [
     hint: 'Use the negated version of the digit shorthand.',
     text: 'Room 42, Door 7B\nPrice: $99!',
     pattern: '\\D', flags: 'g',
-    explain: '`\\D` is the opposite of `\\d` — it matches anything that is NOT a digit. Uppercase shorthand classes always negate their lowercase counterparts.',
+    explain: '`\\D` is the opposite of `\\d` - it matches anything that is NOT a digit. Uppercase shorthand classes always negate their lowercase counterparts.',
   },
   {
     id: '07', title: 'Match hex colors', difficulty: 'easy', category: 'Quantifier', chapter: 'classes',
@@ -90,11 +90,11 @@ export const exercises: Exercise[] = [
   },
   {
     id: '09', title: 'Match consonants', difficulty: 'easy', chapter: 'classes', category: 'Negation',
-    desc: 'Match consonants — letters that are NOT vowels.',
+    desc: 'Match consonants - letters that are NOT vowels.',
     hint: 'Negate the vowel character class.',
     text: 'The quick brown fox jumps.',
     pattern: '[^aeiouAEIOU ]', flags: 'g',
-    explain: '`[^...]` negates a character class — it matches anything NOT in the set. `[^aeiouAEIOU ]` matches consonants, digits, punctuation — but NOT vowels and NOT spaces. Try it with `[^aeiouAEIOU\\s]` to also exclude all whitespace.',
+    explain: '`[^...]` negates a character class - it matches anything NOT in the set. `[^aeiouAEIOU ]` matches consonants, digits, punctuation - but NOT vowels and NOT spaces. Try it with `[^aeiouAEIOU\\s]` to also exclude all whitespace.',
   },
   {
     id: '10', title: 'Three digits in a row', difficulty: 'easy', category: 'Quantifier', chapter: 'quantifiers',
@@ -102,7 +102,7 @@ export const exercises: Exercise[] = [
     hint: 'Use the exact count quantifier.',
     text: 'Call 911 or 555-1234.\nCode: 42, Pin: 9999.',
     pattern: '\\d{3}', flags: 'g',
-    explain: '`\\d{3}` matches exactly 3 digits in a row. `911` and `555` match. `42` has only 2 digits so it doesn\'t match. `9999` has 4 digits — it matches the first 3 (`999`) and leaves the last `9`. Try `\\d{3,4}` to match 3 or 4 digits!',
+    explain: '`\\d{3}` matches exactly 3 digits in a row. `911` and `555` match. `42` has only 2 digits so it doesn\'t match. `9999` has 4 digits - it matches the first 3 (`999`) and leaves the last `9`. Try `\\d{3,4}` to match 3 or 4 digits!',
   },
   {
     id: '11', title: 'One or more digits', difficulty: 'easy', chapter: 'quantifiers', category: 'Quantifier',
@@ -110,12 +110,12 @@ export const exercises: Exercise[] = [
     hint: 'Use the "one or more" quantifier.',
     text: 'Version 2.0.15\nCode: 42, id: 7.',
     pattern: '\\d+', flags: 'g',
-    explain: '`\\d+` matches ONE or MORE consecutive digits. Unlike `\\d` (which matches each digit separately), `+` groups them: `15` is one match, `42` is one match, `7` is one match. This is a greedy quantifier — it takes as many as possible.',
+    explain: '`\\d+` matches ONE or MORE consecutive digits. Unlike `\\d` (which matches each digit separately), `+` groups them: `15` is one match, `42` is one match, `7` is one match. This is a greedy quantifier - it takes as many as possible.',
   },
   {
     id: '12', title: 'Optional "colour"', difficulty: 'medium', chapter: 'quantifiers', category: 'Optional',
     desc: 'Match both "color" and "colour".',
-    hint: 'The "u" is optional — make it optional in the pattern.',
+    hint: 'The "u" is optional - make it optional in the pattern.',
     text: 'color favourite colour honor favourite flavor',
     pattern: 'colou?r', flags: 'g',
     explain: '`?` means "zero or one" of the preceding element. `colou?r` matches `c-o-l-o-u-r` or `c-o-l-o-r` (without the `u`). This is useful for British/American spelling differences.',
@@ -134,7 +134,7 @@ export const exercises: Exercise[] = [
     hint: 'Use word boundaries `\\b` around the word.',
     text: 'cat category catalog dogcat cat\ncatherine',
     pattern: '\\bcat\\b', flags: 'g',
-    explain: '`\\b` asserts a word boundary — the position between a word character and a non-word character. `\\bcat\\b` matches "cat" only when it stands alone, not inside "category" or "catalog".',
+    explain: '`\\b` asserts a word boundary - the position between a word character and a non-word character. `\\bcat\\b` matches "cat" only when it stands alone, not inside "category" or "catalog".',
   },
   {
     id: '15', title: 'Five-letter words', difficulty: 'medium', category: 'Boundary', chapter: 'anchors',
@@ -158,7 +158,7 @@ export const exercises: Exercise[] = [
     hint: 'Use the alternation operator `|`.',
     text: 'I have a cat and a dog.\nThe dog chased the cat.',
     pattern: 'cat|dog', flags: 'g',
-    explain: '`cat|dog` matches either "cat" OR "dog". The `|` operator has low precedence — it alternates between the whole expression on each side. For alternatives within a larger pattern, use groups: `(cat|dog)s` matches "cats" or "dogs".',
+    explain: '`cat|dog` matches either "cat" OR "dog". The `|` operator has low precedence - it alternates between the whole expression on each side. For alternatives within a larger pattern, use groups: `(cat|dog)s` matches "cats" or "dogs".',
   },
   {
     id: '18', title: 'Capture date parts', difficulty: 'medium', category: 'Groups', chapter: 'groups',
@@ -174,7 +174,7 @@ export const exercises: Exercise[] = [
     hint: 'Capture a word with a group, then reference it with a backreference.',
     text: 'the the word word hello is is repeated\nand not this',
     pattern: '(\\w+)\\s+\\1', flags: 'g',
-    explain: '`(\\w+)` captures a word into group 1. `\\s+` matches whitespace between them. `\\1` is a backreference — it matches the exact same text that was captured by group 1. This finds duplicate consecutive words!',
+    explain: '`(\\w+)` captures a word into group 1. `\\s+` matches whitespace between them. `\\1` is a backreference - it matches the exact same text that was captured by group 1. This finds duplicate consecutive words!',
   },
   {
     id: '20', title: 'URL with optional protocol', difficulty: 'medium', category: 'Non-capturing', chapter: 'groups',
@@ -182,7 +182,7 @@ export const exercises: Exercise[] = [
     hint: 'Make the protocol part optional with a non-capturing group.',
     text: 'https://example.com http://test.io\nsite.com https://a.io',
     pattern: '(?:https?://)?[\\w.-]+\\.[a-z]{2,}', flags: 'g',
-    explain: '`(?:...)` is a non-capturing group — it groups without capturing. `(?:https?://)?` makes the protocol optional. `[\\w.-]+` matches the domain name, `\\.[a-z]{2,}` matches the TLD (.com, .org, etc.).',
+    explain: '`(?:...)` is a non-capturing group - it groups without capturing. `(?:https?://)?` makes the protocol optional. `[\\w.-]+` matches the domain name, `\\.[a-z]{2,}` matches the TLD (.com, .org, etc.).',
   },
   {
     id: '21', title: 'Digits before "px"', difficulty: 'hard', chapter: 'lookaround', category: 'Lookahead',
@@ -190,7 +190,7 @@ export const exercises: Exercise[] = [
     hint: 'Use a positive lookahead to check what comes after.',
     text: 'Width: 100px, Height: 200px\nMargin: 15, Padding: 8px',
     pattern: '\\d+(?=px)', flags: 'g',
-    explain: '`(?=px)` is a positive lookahead — it asserts that "px" follows the digits, but does NOT include "px" in the match. So `100px` matches just `100`. This is great for conditional matching without consuming characters.',
+    explain: '`(?=px)` is a positive lookahead - it asserts that "px" follows the digits, but does NOT include "px" in the match. So `100px` matches just `100`. This is great for conditional matching without consuming characters.',
   },
   {
     id: '22', title: 'Not "cat" words', difficulty: 'hard', category: 'Negative lookahead', chapter: 'lookaround',
@@ -198,7 +198,7 @@ export const exercises: Exercise[] = [
     hint: 'Combine negative lookahead with word boundary.',
     text: 'cat bat rat cat mat\nsat fat cat',
     pattern: '\\b(?!cat\\b)\\w{3}\\b', flags: 'g',
-    explain: '`(?!cat\\b)` is a negative lookahead — it asserts that "cat" does NOT appear at this position. Combined with `\\b\\w{3}\\b` (any 3-letter word), this matches all 3-letter words EXCEPT "cat".',
+    explain: '`(?!cat\\b)` is a negative lookahead - it asserts that "cat" does NOT appear at this position. Combined with `\\b\\w{3}\\b` (any 3-letter word), this matches all 3-letter words EXCEPT "cat".',
   },
   {
     id: '23', title: 'Price after $', difficulty: 'hard', category: 'Lookbehind', chapter: 'lookaround',
@@ -206,7 +206,7 @@ export const exercises: Exercise[] = [
     hint: 'Use a positive lookbehind to check what comes before.',
     text: 'Price: $25.99, Cost: $100\nValue: 50€, Sale: $9.99',
     pattern: '(?<=\\$)\\d+(?:\\.\\d{2})?', flags: 'g',
-    explain: '`(?<=\\$)` is a positive lookbehind — it asserts that a `$` comes before the digits, without including it in the match. `\\d+(?:\\.\\d{2})?` matches the dollar amount with optional cents.',
+    explain: '`(?<=\\$)` is a positive lookbehind - it asserts that a `$` comes before the digits, without including it in the match. `\\d+(?:\\.\\d{2})?` matches the dollar amount with optional cents.',
   },
   {
     id: '24', title: 'Email addresses', difficulty: 'hard', chapter: 'practical', category: 'Practical',
@@ -214,7 +214,7 @@ export const exercises: Exercise[] = [
     hint: 'Capture three parts: username @ domain . tld.',
     text: 'Contact: alice@example.com\nAdmin: bob.smith@gmail.org\nSpam: test@co.uk',
     pattern: '([\\w.-]+)@([\\w.-]+)\\.(\\w+)', flags: 'g',
-    explain: 'Three capture groups: `([\\w.-]+)` matches the username (word chars, dots, hyphens), `([\\w.-]+)` matches the domain, `(\\w+)` matches the TLD. Notice "co.uk" captures "co" as domain and "uk" as TLD — real email parsing is more complex!',
+    explain: 'Three capture groups: `([\\w.-]+)` matches the username (word chars, dots, hyphens), `([\\w.-]+)` matches the domain, `(\\w+)` matches the TLD. Notice "co.uk" captures "co" as domain and "uk" as TLD - real email parsing is more complex!',
   },
   {
     id: '25', title: 'Full URLs', difficulty: 'hard', chapter: 'practical', category: 'Practical',
@@ -246,7 +246,7 @@ export const exercises: Exercise[] = [
     hint: 'Capture the tag name and use a backreference for the closing tag.',
     text: '<div><p>text</p><span>hi</span></div>\n<br/><img/>',
     pattern: '<(\\w+)[^>]*>.*?</\\1>', flags: 'g',
-    explain: '`<(\\w+)` captures the tag name. `[^>]*>` matches attributes and the closing `>`. `.*?` matches the content (lazy — the `?` makes it non-greedy). `</\\1>` uses a backreference to match the closing tag. `<br/>` and `<img/>` don\'t match because they have no closing tag.',
+    explain: '`<(\\w+)` captures the tag name. `[^>]*>` matches attributes and the closing `>`. `.*?` matches the content (lazy - the `?` makes it non-greedy). `</\\1>` uses a backreference to match the closing tag. `<br/>` and `<img/>` don\'t match because they have no closing tag.',
   },
   {
     id: '29', title: 'IPv4 addresses', difficulty: 'expert', category: 'Complex', chapter: 'practical',
@@ -270,7 +270,7 @@ export const exercises: Exercise[] = [
     hint: 'Two digits, colon, two digits.',
     text: 'Meeting at 14:30, lunch at 12:00\nBreak at 09:15, invalid: 25:70',
     pattern: '\\b\\d{2}:\\d{2}\\b', flags: 'g',
-    explain: '`\\d{2}:\\d{2}` matches two digits, colon, two digits. Word boundaries ensure we don\'t match partial patterns. This matches valid and invalid times — advanced patterns can validate hours 00-23 and minutes 00-59.',
+    explain: '`\\d{2}:\\d{2}` matches two digits, colon, two digits. Word boundaries ensure we don\'t match partial patterns. This matches valid and invalid times - advanced patterns can validate hours 00-23 and minutes 00-59.',
   },
   {
     id: '32', title: 'Semantic versions', difficulty: 'hard', chapter: 'practical', category: 'Pattern',
@@ -286,23 +286,23 @@ export const exercises: Exercise[] = [
     hint: 'The dot is a special metacharacter that stands in for any single character.',
     text: 'cat bat rat mat\nhot pot dot',
     pattern: '.at', flags: 'g',
-    explain: '`.` matches any single character except a newline. `.at` matches "cat", "bat", "rat", "mat", "hot", "pot", "dot" — any character followed by "at". To match a literal dot, you must escape it: `\\.`',
+    explain: '`.` matches any single character except a newline. `.at` matches "cat", "bat", "rat", "mat", "hot", "pot", "dot" - any character followed by "at". To match a literal dot, you must escape it: `\\.`',
   },
   {
     id: '34', title: 'Match a literal dot', difficulty: 'easy', category: 'Escaping', chapter: 'literal',
-    desc: 'Match only the dots in version numbers — not just any character.',
+    desc: 'Match only the dots in version numbers - not just any character.',
     hint: 'A dot is a metacharacter. Prefix it with `\\` to treat it as literal.',
     text: 'v1.2.3 is stable\nv1 2 3 is not a version',
     pattern: '\\.', flags: 'g',
-    explain: 'Without escaping, `.` matches any character — including spaces and letters. `\\.` escapes the dot so it only matches a literal period. The same rule applies to all metacharacters: `\\*`, `\\+`, `\\(`, `\\)`, `\\[`, etc.',
+    explain: 'Without escaping, `.` matches any character - including spaces and letters. `\\.` escapes the dot so it only matches a literal period. The same rule applies to all metacharacters: `\\*`, `\\+`, `\\(`, `\\)`, `\\[`, etc.',
   },
   {
     id: '35', title: 'Zero or more !', difficulty: 'easy', category: 'Quantifier', chapter: 'quantifiers',
-    desc: 'Match `ha` followed by any number of exclamation marks — including none.',
+    desc: 'Match `ha` followed by any number of exclamation marks - including none.',
     hint: 'Use `*` for zero or more repetitions.',
     text: 'ha ha! ha!! ha!!! nice',
     pattern: 'ha!*', flags: 'g',
-    explain: '`*` means zero or more of the preceding element. `ha!*` matches "ha" with any number of `!`s — including zero. Unlike `+` (one or more), `*` succeeds even when the element is absent. "nice" does not match because it does not start with "ha".',
+    explain: '`*` means zero or more of the preceding element. `ha!*` matches "ha" with any number of `!`s - including zero. Unlike `+` (one or more), `*` succeeds even when the element is absent. "nice" does not match because it does not start with "ha".',
   },
   {
     id: '36', title: '4 to 6 letter words', difficulty: 'medium', category: 'Quantifier', chapter: 'quantifiers',
@@ -334,7 +334,7 @@ export const exercises: Exercise[] = [
     hint: 'Add `?` after your quantifier to make it stop at the earliest possible match.',
     text: '"hello" and "world" and "regex"',
     pattern: '".*?"', flags: 'g',
-    explain: '`.*` is greedy — it matches as much as possible. `".*"` would match from the first `"` all the way to the last `"` as one huge match. `.*?` is lazy — it matches as little as possible — so `".*?"` stops at the first closing quote, giving three separate matches.',
+    explain: '`.*` is greedy - it matches as much as possible. `".*"` would match from the first `"` all the way to the last `"` as one huge match. `.*?` is lazy - it matches as little as possible - so `".*?"` stops at the first closing quote, giving three separate matches.',
   },
   {
     id: '40', title: 'Numbers not after $', difficulty: 'hard', category: 'Negative lookbehind', chapter: 'lookaround',
@@ -342,6 +342,6 @@ export const exercises: Exercise[] = [
     hint: 'Use a negative lookbehind to exclude values after `$`.',
     text: 'Score: 42, $100 prize, 7 items, $500 reward',
     pattern: '(?<!\\$)\\b\\d+\\b', flags: 'g',
-    explain: '`(?<!\\$)` is a negative lookbehind — it asserts that `$` does NOT immediately precede this position. Combined with `\\b\\d+\\b` (whole numbers), only "42" and "7" match. "100" and "500" are excluded because they follow a dollar sign.',
+    explain: '`(?<!\\$)` is a negative lookbehind - it asserts that `$` does NOT immediately precede this position. Combined with `\\b\\d+\\b` (whole numbers), only "42" and "7" match. "100" and "500" are excluded because they follow a dollar sign.',
   },
 ]

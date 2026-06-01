@@ -28,10 +28,10 @@ function patternsMatch(
 }
 
 function streakLabel(n: number) {
-  if (n >= 30) return `🔥 ${n} day streak — legendary!`
-  if (n >= 7)  return `🔥 ${n} day streak — on fire!`
+  if (n >= 30) return `🔥 ${n} day streak - legendary!`
+  if (n >= 7)  return `🔥 ${n} day streak - on fire!`
   if (n >= 2)  return `🔥 ${n} day streak`
-  return `🔥 1 day streak — great start!`
+  return `🔥 1 day streak - great start!`
 }
 
 /* ---------- Already-done view ---------- */
@@ -149,7 +149,7 @@ export default function Daily() {
       {/* completion celebration */}
       {justCompleted && (
         <div className="daily-completed-banner">
-          🎉 Done! {streakLabel(streak)} — see you tomorrow.
+          🎉 Done! {streakLabel(streak)} - see you tomorrow.
           <Link to="/exercises" className="daily-more-link">Want more?</Link>
         </div>
       )}

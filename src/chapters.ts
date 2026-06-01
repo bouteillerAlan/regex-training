@@ -9,7 +9,7 @@ export interface Chapter {
 export const chapters: Chapter[] = [
   {
     id: 'literal',
-    title: 'Getting Started — Literal Matches',
+    title: 'Getting Started - Literal Matches',
     desc: 'Regex starts simple: type the exact text you want to find. No special syntax, just plain characters.',
     guide: `A **literal** regex is just the characters you want to match, in order.
 
@@ -26,7 +26,7 @@ export const chapters: Chapter[] = [
 
 **Escaping:** If you need to match a special character like \`.\`, \`*\`, or \`+\`, put a backslash before it: \`\\.\` matches a literal dot.
 
-> In the exercises, try matching "cat" and notice it also matches inside "category" — that's why we later learn about word boundaries!`,
+> In the exercises, try matching "cat" and notice it also matches inside "category" - that's why we later learn about word boundaries!`,
     exercises: ['01', '33', '34', '38'],
   },
   {
@@ -92,7 +92,7 @@ export const chapters: Chapter[] = [
     id: 'anchors',
     title: 'Anchors & Boundaries',
     desc: 'Match positions instead of characters: start of line, end of line, word boundaries.',
-    guide: `**Anchors** don't match characters — they match positions in the text.
+    guide: `**Anchors** don't match characters - they match positions in the text.
 
 \`\`\`
 /^Hello/m  → lines starting with "Hello"
@@ -112,7 +112,7 @@ export const chapters: Chapter[] = [
 
 **Word boundaries** are essential for matching whole words. Without \`\\b\`, a pattern like \`cat\` will match inside "category", "scat", "catalog" etc.
 
-> Think of anchors as "invisible checkpoints" — they assert something about the position but consume no characters.`,
+> Think of anchors as "invisible checkpoints" - they assert something about the position but consume no characters.`,
     exercises: ['14', '15', '16', '37'],
   },
   {
@@ -141,7 +141,7 @@ export const chapters: Chapter[] = [
 
 **Named groups** make patterns self-documenting: \`(?<year>\\d{4})\` vs remembering "group 1 is year".
 
-> Groups are the most powerful regex feature — they turn "does it match?" into "what did it match and can I reuse it?"`,
+> Groups are the most powerful regex feature - they turn "does it match?" into "what did it match and can I reuse it?"`,
     exercises: ['17', '18', '19', '20', '26'],
   },
   {
@@ -203,7 +203,7 @@ export const chapters: Chapter[] = [
 • Document complex patterns with comments (use \`x\` flag)
 • Named groups make patterns self-documenting
 
-> Professional regex is about knowing which patterns are reliable vs "good enough". Email validation, for example, is famously complex — many production systems use a \`@\` check plus a library.`,
+> Professional regex is about knowing which patterns are reliable vs "good enough". Email validation, for example, is famously complex - many production systems use a \`@\` check plus a library.`,
     exercises: ['24', '25', '28', '29', '30', '32'],
   },
 ]

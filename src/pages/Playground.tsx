@@ -117,7 +117,7 @@ export default function Playground() {
       {showExamples && (
         <section className="drawer">
           <div className="drawer-header">
-            <h2>📚 Examples — {FLAVORS.find(f => f.value === flavor)?.label}</h2>
+            <h2>📚 Examples - {FLAVORS.find(f => f.value === flavor)?.label}</h2>
             <button className="drawer-close" onClick={() => setShowExamples(false)} type="button">✕</button>
           </div>
           <div className="examples-grid">
@@ -136,7 +136,7 @@ export default function Playground() {
       {showCheat && (
         <section className="drawer">
           <div className="drawer-header">
-            <h2>📖 Quick Reference — {FLAVORS.find(f => f.value === flavor)?.label}</h2>
+            <h2>📖 Quick Reference - {FLAVORS.find(f => f.value === flavor)?.label}</h2>
             <button className="drawer-close" onClick={() => setShowCheat(false)} type="button">✕</button>
           </div>
           <div className="cheat-grid">
