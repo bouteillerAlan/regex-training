@@ -4,6 +4,7 @@ import Playground from './pages/Playground'
 import Daily from './pages/Daily'
 import ExercisesList from './pages/ExercisesList'
 import ExerciseDetail from './pages/ExerciseDetail'
+import About from './pages/About'
 
 const rootRoute = createRootRoute({
   component: Layout,
@@ -39,12 +40,19 @@ const exerciseDetailRoute = createRoute({
   component: ExerciseDetail,
 })
 
+const aboutRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/about',
+  component: About,
+})
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   playgroundRoute,
   dailyRoute,
   exercisesRoute,
   exerciseDetailRoute,
+  aboutRoute,
 ])
 
 const router = createRouter({ routeTree })

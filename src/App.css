@@ -1429,12 +1429,97 @@
   background: rgba(63, 185, 80, 0.25);
 }
 
+/* ---------- about page ---------- */
+
+.about-page {
+  padding: 40px 0;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.about-card {
+  max-width: 640px;
+  width: 100%;
+}
+
+.about-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin: 0 0 16px;
+}
+
+.about-section-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin: 0 0 10px;
+}
+
+.about-text {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin: 0 0 12px;
+}
+
+.about-list {
+  margin: 0 0 12px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.about-list li {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.about-list li::marker {
+  color: var(--accent);
+}
+
+.about-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 20px 0;
+}
+
+.about-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.about-link:hover {
+  text-decoration: underline;
+}
+
 /* ---------- daily page ---------- */
 
 .daily-page {
   padding: 20px 0;
   flex: 1;
   max-width: 860px;
+}
+
+.daily-intro {
+  margin-bottom: 20px;
+}
+
+.daily-intro-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin: 0 0 4px;
+}
+
+.daily-intro-sub {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  margin: 0;
 }
 
 .daily-meta {

@@ -31,6 +31,9 @@ export default function Layout() {
           <Link to="/playground" activeProps={{ className: 'nav-link active' }} className="nav-link">
             🎯 Playground
           </Link>
+          <Link to="/about" activeProps={{ className: 'nav-link active' }} className="nav-link">
+            About
+          </Link>
           <div className="nav-reset">
             {confirming ? (
               <>

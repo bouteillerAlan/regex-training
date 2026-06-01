@@ -126,6 +126,11 @@ export default function Daily() {
   return (
     <div className="daily-page">
       {/* header */}
+      <div className="daily-intro">
+        <h2 className="daily-intro-title">Your daily dose of regex training</h2>
+        <p className="daily-intro-sub">One exercise a day keeps the pattern blindness away.</p>
+      </div>
+
       <div className="daily-meta">
         <span className="daily-date-label">📅 {todayLabel()}</span>
         {streak > 0 && <span className="daily-streak-pill">{streakLabel(streak)}</span>}
