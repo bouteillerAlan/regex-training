@@ -44,7 +44,6 @@ export const chapters: Chapter[] = [
 
 **Shorthand classes** are shortcuts for common sets:
 | Shorthand | Meaning | Equivalent |
-|-----------|---------|------------|
 | \`\\d\` | Digit | \`[0-9]\` |
 | \`\\w\` | Word char | \`[a-zA-Z0-9_]\` |
 | \`\\s\` | Whitespace | \`[ \\t\\n\\r\\f]\` |
@@ -73,7 +72,6 @@ export const chapters: Chapter[] = [
 \`\`\`
 
 | Quantifier | Meaning | Example |
-|-----------|---------|---------|
 | \`*\` | Zero or more | \`a*\` matches "", "a", "aa"… |
 | \`+\` | One or more | \`a+\` matches "a", "aa"… but not "" |
 | \`?\` | Zero or one | \`a?\` matches "" or "a" |
@@ -102,7 +100,6 @@ export const chapters: Chapter[] = [
 \`\`\`
 
 | Anchor | Meaning |
-|--------|---------|
 | \`^\` | Start of string (or line with \`m\` flag) |
 | \`$\` | End of string (or line with \`m\` flag) |
 | \`\\b\` | Word boundary (between \\w and \\W) |
@@ -129,7 +126,6 @@ export const chapters: Chapter[] = [
 \`\`\`
 
 | Syntax | Name | Use |
-|--------|------|-----|
 | \`(x)\` | Capturing group | Captures match into \`\\1\`, \`\\2\`… |
 | \`(?:x)\` | Non-capturing group | Groups without saving |
 | \`x|y\` | Alternation | Match x OR y |
@@ -158,7 +154,6 @@ export const chapters: Chapter[] = [
 \`\`\`
 
 | Syntax | Name | Matches… |
-|--------|------|----------|
 | \`(?=x)\` | Positive lookahead | If followed by x |
 | \`(?!x)\` | Negative lookahead | If NOT followed by x |
 | \`(?<=x)\` | Positive lookbehind | If preceded by x |
