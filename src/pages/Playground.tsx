@@ -53,6 +53,7 @@ export default function Playground() {
               <span className="flavor-label">{f.label}</span>
             </button>
           ))}
+          {flavor !== 'javascript' && <span className="simulated-tag">simulated</span>}
         </div>
         <div className="toolbar-actions">
           <button className="toolbar-btn" onClick={() => { setShowExamples(!showExamples); setShowCheat(false) }} type="button">
