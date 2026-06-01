@@ -36,6 +36,12 @@
   letter-spacing: -0.3px;
 }
 
+.logo-star {
+  color: #e63946;
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+}
+
 .header-subtitle {
   font-size: 0.82rem;
   color: var(--text-dim);

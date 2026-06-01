@@ -18,7 +18,7 @@ export default function Layout() {
       <header className="app-header">
         <div className="header-left">
           <Link to="/" className="logo-link">
-            <h1 className="logo">⋈ Regex Playground</h1>
+            <h1 className="logo"><span className="logo-star">*.</span> Regex Playground</h1>
           </Link>
         </div>
         <nav className="nav">
